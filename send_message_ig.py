@@ -7,7 +7,6 @@ import time
 
 class InstagramMessage(unittest.TestCase):
 
-    @classmethod
     def setUp(self):
         self.driver = webdriver.Chrome(executable_path='/home/francisco/chrome_web_driver')
         self.driver.maximize_window()
@@ -65,7 +64,6 @@ class InstagramMessage(unittest.TestCase):
         time.sleep(10)
 
 
-    @classmethod
     def tearDown(self):
         self.driver.quit()
 
