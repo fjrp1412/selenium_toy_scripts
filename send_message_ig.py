@@ -8,7 +8,7 @@ import time
 class InstagramMessage(unittest.TestCase):
 
     def setUp(self):
-        self.driver = webdriver.Chrome(executable_path='/home/francisco/chrome_web_driver')
+        self.driver = webdriver.Chrome(executable_path='') #Insert your google chrome drive path
         self.driver.maximize_window()
         self.driver.get('https://www.instagram.com/')
 
