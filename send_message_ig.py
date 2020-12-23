@@ -12,8 +12,7 @@ class InstagramMessage(unittest.TestCase):
         self.driver.maximize_window()
         self.driver.get('https://www.instagram.com/')
 
-
-    def test_send_message(self):
+    def enterToAccount(self):
         driver = self.driver
         USER = 'franjrp_'
         PASSWORD = 'crashvarius1'
@@ -35,17 +34,17 @@ class InstagramMessage(unittest.TestCase):
         not_now = WebDriverWait(driver, 5).until(EC.element_to_be_clickable( (By.XPATH, '/html/body/div[4]/div/div/div/div[3]/button[2]')))
         not_now.click()
 
+
+    def enterToDirect(self):
+        driver = self.driver
         instagram_direct = driver.find_element_by_xpath('//*[@id="react-root"]/section/nav/div[2]/div/div/div[3]/div/div[2]/a/div/div/div')
         instagram_direct.click()
-
-       # chachati = WebDriverWait(driver, 15).until(EC.visibility_of_element_located( (By.LINK_TEXT, 'echachati')))
-       # chachati.click()
 
         contact_to_search = input("A que contacto buscas? ")
         contact = ""
 
         for i in range(1,11):
-            name = driver.find_element_by_xpath(f'/html/body/div[1]/section/div/div[2]/div/div/div[1]/div[2]/div/div/div/div/div[{i}]/a/div/div[2]/div[1]/div/div/div/div').text
+            name = driver.find_element_by_xpath(f'/html/body/div[1]/section/div/div[2]/div/div/div[1]/div[2]/div/div/div/div/div[{i}]/a/div/div[2]/div[1]           /div/div/div/div').text
             if(name == contact_to_search):
                 contact = driver.find_element_by_xpath(f'/html/body/div[1]/section/div/div[2]/div/div/div[1]/div[2]/div/div/div/div/div[{i}]/a')
                 break
@@ -54,14 +53,21 @@ class InstagramMessage(unittest.TestCase):
 
         contact.click()
 
+    def enterMessage(self):
+        driver = self.driver
         text_field = WebDriverWait(driver, 10).until(EC.visibility_of_element_located( ( By.TAG_NAME, 'textarea')))
         text_field.clear()
         message = input("Inserte el mensaje a enviar: ")
         text_field.send_keys(message)
 
-        send_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable( (By.XPATH, '//*[@id="react-root"]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[3]/button')))
+        send_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable( (By.XPATH, '//*[@id="react-root"]/section/div/div[2]/div/div/div[2]/div       [2]/div/div[2]/div/div/div[3]/button')))
         send_button.click()
         time.sleep(10)
+
+    def test_send_message(self):
+        self.enterToAccount()
+        self.enterToDirect()
+        self.enterMessage()
 
 
     def tearDown(self):
