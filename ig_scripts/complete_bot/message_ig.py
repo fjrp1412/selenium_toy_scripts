@@ -12,7 +12,7 @@ class InstagramMessage():
         self._PASSWORD = PASSWORD
 
     def setUp(self):
-        self.driver = webdriver.Chrome(executable_path='/home/francisco/chrome_web_driver') #Insert your google chrome drive path
+        self.driver = webdriver.Chrome(executable_path='') #Insert your google chrome drive path
         self.driver.maximize_window()
         self.driver.get('https://www.instagram.com/')
 
