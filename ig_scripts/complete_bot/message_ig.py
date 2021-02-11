@@ -55,11 +55,13 @@ class InstagramMessage():
                     contact_user = line[1]
                     break
 
-        for i in range(1,11):
+        i = 1
+        while(True):
             name = driver.find_element_by_xpath(f'/html/body/div[1]/section/div/div[2]/div/div/div[1]/div[2]/div/div/div/div/div[{i}]/a/div/div[2]/div[1]/div/div/div/div').text
             if(name == contact_user):
                 contact = driver.find_element_by_xpath(f'/html/body/div[1]/section/div/div[2]/div/div/div[1]/div[2]/div/div/div/div/div[{i}]/a')
                 break
+            i += 1
 
         assert bool(contact), "Error, contacto no encontrado"
 
