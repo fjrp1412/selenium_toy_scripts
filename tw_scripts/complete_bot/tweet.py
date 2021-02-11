@@ -10,7 +10,7 @@ import unittest
 class Twitter(unittest.TestCase):
 
     def setUp(self):
-        self.driver = webdriver.Chrome(executable_path='/home/francisco/chrome_web_driver')
+        self.driver = webdriver.Chrome(executable_path='')
         self.driver.maximize_window()
         self.driver.get('https://twitter.com')
 
@@ -44,7 +44,7 @@ class Twitter(unittest.TestCase):
         self.enterToAccount()
         driver = self.driver
         tweet_input = WebDriverWait(driver, 10).until(EC.element_to_be_clickable( (By.XPATH, '//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/div/div/div/div[2]/div[1]/div/div/div/div/div/div/div/div/div/div[1]/div/div/div/div[2]/div/div/div/div')))
-        tweet_input.send_keys('@EJChati sigo probando, te toca span mmgvo')
+        tweet_input.send_keys('enter your message')
 
         send_tweet_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable( (By.XPATH, '//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/div/div/div/div[2]/div[4]/div/div/div[2]/div[3]')))
         send_tweet_button.click()
